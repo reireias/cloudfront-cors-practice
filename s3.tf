@@ -66,3 +66,10 @@ resource "aws_s3_bucket_object" "main_image" {
   source       = "files/image.png"
   content_type = "image/png"
 }
+
+resource "aws_s3_bucket_object" "main_font" {
+  bucket       = aws_s3_bucket.main.bucket
+  key          = "fa-regular-400.woff2"
+  source       = "files/fa-regular-400.woff2"
+  content_type = "application/font-woff2"
+}
