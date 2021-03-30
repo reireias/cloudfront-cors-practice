@@ -34,6 +34,18 @@ resource "aws_s3_bucket_object" "main_to_main" {
   content_type = "text/html"
 }
 
+resource "aws_s3_bucket_object" "to_sub2" {
+  bucket = aws_s3_bucket.main.bucket
+  key    = "to_sub2_asset.html"
+  content = templatefile("files/template.html", {
+    title = "main to sub2"
+    css   = "https://sub2.reireias.link/style.css"
+    js    = "https://sub2.reireias.link/script.js"
+    image = "https://sub2.reireias.link/image.png"
+  })
+  content_type = "text/html"
+}
+
 resource "aws_s3_bucket_object" "main_css" {
   bucket       = aws_s3_bucket.main.bucket
   key          = "style.css"
